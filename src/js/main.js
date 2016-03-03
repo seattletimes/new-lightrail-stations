@@ -46,6 +46,16 @@ var halfMileRadius = new L.Circle([47.649617272744166, -122.3038199543953], 804,
   fillOpacity: .1
 });
 
+var uwmc = new L.Marker([47.650098991309704, -122.30911731719972], {
+  icon: new L.DivIcon({ className: "leaflet-div-icon employer" })
+});
+uwmc.bindPopup("UW Medical Center");
+
+var seattleChildrens = new L.Marker([47.662618497165134, -122.28229522705078], {
+  icon: new L.DivIcon({ className: "leaflet-div-icon employer" })
+});
+seattleChildrens.bindPopup("Seattle Children's Hospital");
+
 var linkStops = window.linkStops.map(function(data) {
   var marker = new L.Marker([data.lat, data.lng], {
     icon: new L.DivIcon({ className: "leaflet-div-icon link-stop" })
@@ -79,16 +89,16 @@ On Mar. 19, the UW light rail station opens for commuters. Situated next to Husk
     `
   },
   {
-    zoom: 15,
-    center: [47.652617272744166, -122.3038199543953],
-    layers: [halfMileRadius],
-    text: "The new station is expected to be a serious boon to nearby employers, including the 5,000 workers at the University of Washington Medical Center. The shaded circle on the map marks a half-mile radius around the station, but shuttles will also run to the Seattle Children's Hospital, which employs 6,340 people."
-  },
-  {
     zoom: 17,
     center: [47.65118644440777, -122.30517668819427],
     layers: busStopsUW,
-    text: "Extending the light rail this far also opens up opportunities for commuters who may transfer to or from a bus. The map shows bus stops within easy walking distance, headed into North Seattle. It's also expected that some passengers may travel over the 520 bridge, then park nearby and take the train down to the Stadium or other South Seattle destinations."
+    text: "Extending the light rail this far opens up opportunities for commuters who may transfer to or from a bus. The map shows bus stops within easy walking distance, headed into North Seattle. It's also expected that some passengers may travel over the 520 bridge, then park nearby and take the train down to the Stadium or other South Seattle destinations."
+  },
+  {
+    zoom: 14,
+    center: [47.654617272744166, -122.2958199543953],
+    layers: [halfMileRadius, uwmc, seattleChildrens],
+    text: "The new station is also expected to be a serious boon to nearby employers, including the 5,000 workers at the University of Washington Medical Center. The shaded circle on the map marks a half-mile radius around the station, but shuttles will also run to the Seattle Children's Hospital, which employs 6,340 people."
   },
   {
     zoom: 11,

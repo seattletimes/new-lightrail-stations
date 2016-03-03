@@ -1,7 +1,3 @@
-// require("./lib/social");
-// require("./lib/ads");
-// var track = require("./lib/tracking");
-
 var $ = require("./lib/qsa");
 
 require("component-responsive-frame/child");
@@ -14,6 +10,13 @@ var L = mapElement.leaflet;
 var caption = document.querySelector(".text-container .caption");
 var level = 0;
 
+mapElement.lookup.line.setStyle({
+  color: "red",
+  weight: 2,
+  clickable: false,
+  pointerEvents: "none"
+});
+
 map.removeLayer(mapElement.lookup.line);
 
 // various layers
@@ -22,19 +25,19 @@ var stationOverlay = new L.ImageOverlay(
   [[47.64890028833129, -122.3047399520874], [47.65007116508271, -122.30315208435057]]
 );
 
-var busStopsUW = [
-  { coords: [47.65091352964277, -122.30414986610411], routes: "44, 45, 71, 73, 373" },
-  { coords: [47.65193258827157, -122.30320572853088], routes: "65, 78" },
-  { coords: [47.649757126971885, -122.30572700500487], routes: "43, 44, 45, 48, 71, 73, 167, 271, 277, 373, 540, 541, 542, 556" },
-  { coords: [47.649301786394226, -122.30541586875916], routes: "43, 48, 167, 197, 271, 277, 540, 541, 542, 556, 586" },
-  { coords: [47.65222167929731, -122.3063063621521], routes: "31, 32, 67, 78, 277, 540, 810, 821, 855, 860, 871, 880" }
-];
+var busStopsUW = window.busStops.map(function(stop) {
+  var routes = stop.routes.split(",").map(function(r) {
+    var split = r.split("/");
+    return {
+      route: split[0],
+      dest: split[1]
+    }
+  }).map(r => `<li><b>${r.route}</b> - ${r.dest}`);
 
-busStopsUW = busStopsUW.map(function(stop) {
-  var marker = new L.Marker(stop.coords, {
+  var marker = new L.Marker([stop.lat, stop.lng], {
     icon: new L.DivIcon({ className: "leaflet-div-icon bus-stop" })
   });
-  marker.bindPopup(`<h2>Routes</h2><p>${stop.routes}</p>`);
+  marker.bindPopup(`<h2>Routes</h2><ul>${routes}</ul>`);
   return marker;
 });
 

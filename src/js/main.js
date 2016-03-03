@@ -84,27 +84,25 @@ var levels = [
     center: [47.649617272744166, -122.3038199543953],
     layers: [stationOverlay],
     retainLayers: true,
-    text: `
-On Mar. 19, the UW light rail station opens for commuters. Situated next to Husky Stadium, the station offers easy access to bike lanes and pedestrians.
-    `
+    text: window.stageText.uw_elevation.content
   },
   {
     zoom: 17,
     center: [47.65118644440777, -122.30517668819427],
     layers: busStopsUW,
-    text: "Extending the light rail this far opens up opportunities for commuters who may transfer to or from a bus. The map shows bus stops within easy walking distance, headed into North Seattle. It's also expected that some passengers may travel over the 520 bridge, then park nearby and take the train down to the Stadium or other South Seattle destinations."
+    text: window.stageText.uw_buses.content
   },
   {
     zoom: 14,
     center: [47.654617272744166, -122.2958199543953],
     layers: [halfMileRadius, uwmc, seattleChildrens],
-    text: "The new station is also expected to be a serious boon to nearby employers, including the 5,000 workers at the University of Washington Medical Center. The shaded circle on the map marks a half-mile radius around the station, but shuttles will also run to the Seattle Children's Hospital, which employs 6,340 people."
+    text: window.stageText.uw_employers.content
   },
   {
     zoom: 11,
     center: [47.55605771027536, -122.32409477233885],
     layers: linkStops.concat(mapElement.lookup.line),
-    text: "The UW and Capital Hill stations, shown in green on the map, are the first additions to the line. They're expected to be followed by the Angle Lake station south of the airport in XXXX, and a station in Northgate in XXXX."
+    text: window.stageText.full_line.content
   }
 ];
 

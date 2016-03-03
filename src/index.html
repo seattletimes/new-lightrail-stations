@@ -22,13 +22,17 @@
         </section>
         <section class="text-container">
           <div class="zoom-controls">
-            <a class="zoom in">[-]</a>
-            <a class="zoom out">[+]</a>
+            <a class="zoom in">Previous</a>
+            <a class="zoom out">Next</a>
           </div>
           <div class="caption"></div>
         </section>
       </main>
     </responsive-child>
+
+    <script>
+window.linkStops = <%= JSON.stringify(csv.stops) %>;
+    </script>
 
     <script src="app.js" async></script>
     <% if (json.project.production) { %>

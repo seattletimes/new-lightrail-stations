@@ -6,6 +6,8 @@ main.interactive {
   margin: 20px auto;
   border-top: 1px solid @df-light-gray;
   border-bottom: 1px solid @df-light-gray;
+  font-family: @df-sans;
+  font-size: 15px;
 
   .map-container {
     .flex(2);
@@ -31,6 +33,38 @@ main.interactive {
   }
 }
 
+.text-container {
+  .display-flex();
+  .flex-direction(column);
+
+  .zoom-controls {
+    .display-flex();
+
+    .zoom {
+      background: @df-light-gray;
+      .flex(1);
+      text-align: center;
+      color: @df-dark-gray;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 8px 4px;
+      border: 1px solid white;
+      transition: .3s;
+
+      &:hover {
+        background: @df-middle-gray;
+        color: white;
+      }
+    }
+  }
+
+  .caption {
+    padding: 16px 8px;
+  }
+}
+
+
+//leaflet styles
 .leaflet-container {
   cursor: default !important;
 }
@@ -38,4 +72,13 @@ main.interactive {
 .bus-stop.leaflet-div-icon {
   border-radius: 100%;
   background: @df-blue;
+}
+
+.link-stop.leaflet-div-icon {
+  border-radius: 4px;
+  background: @st-dark-purple;
+
+  &.new-station {
+    background: @st-dark-green;
+  }
 }

@@ -14,7 +14,7 @@ var L = mapElement.leaflet;
 var caption = document.querySelector(".text-container .caption");
 var level = 0;
 
-console.log(mapElement.lookup);
+map.removeLayer(mapElement.lookup.line);
 
 // various layers
 var stationOverlay = new L.ImageOverlay(
@@ -22,13 +22,15 @@ var stationOverlay = new L.ImageOverlay(
   [[47.64890028833129, -122.3047399520874], [47.65007116508271, -122.30315208435057]]
 );
 
-var stops = [
+var busStopsUW = [
   { coords: [47.65091352964277, -122.30414986610411], routes: "44, 45, 71, 73, 373" },
   { coords: [47.65193258827157, -122.30320572853088], routes: "65, 78" },
-  { coords: [47.649757126971885, -122.30572700500487], routes: "43, 44, 45, 48, 71, 73, 167, 271, 277, 373, 540, 541, 542, 556"}
+  { coords: [47.649757126971885, -122.30572700500487], routes: "43, 44, 45, 48, 71, 73, 167, 271, 277, 373, 540, 541, 542, 556" },
+  { coords: [47.649301786394226, -122.30541586875916], routes: "43, 48, 167, 197, 271, 277, 540, 541, 542, 556, 586" },
+  { coords: [47.65222167929731, -122.3063063621521], routes: "31, 32, 67, 78, 277, 540, 810, 821, 855, 860, 871, 880" }
 ];
 
-stops = stops.map(function(stop) {
+busStopsUW = busStopsUW.map(function(stop) {
   var marker = new L.Marker(stop.coords, {
     icon: new L.DivIcon({ className: "leaflet-div-icon bus-stop" })
   });
@@ -37,10 +39,35 @@ stops = stops.map(function(stop) {
 });
 
 var halfMileRadius = new L.Circle([47.649617272744166, -122.3038199543953], 804, {
-  fillColor: "#00F",
-  stroke: false
-})
+  fillColor: "#444",
+  // stroke: false,
+  color: "white",
+  weight: 2,
+  fillOpacity: .1
+});
 
+var linkStops = window.linkStops.map(function(data) {
+  var marker = new L.Marker([data.lat, data.lng], {
+    icon: new L.DivIcon({ className: "leaflet-div-icon link-stop" })
+  });
+  marker.bindPopup(data.station);
+  return marker;
+});
+
+var capHill = new L.Marker([47.619040209021506, -122.32044696807861], {
+  icon: new L.DivIcon({ className: "leaflet-div-icon link-stop new-station" })
+});
+capHill.bindPopup("Capital Hill");
+
+var UW = new L.Marker([47.649617272744166, -122.3038199543953], {
+  icon: new L.DivIcon({ className: "leaflet-div-icon link-stop new-station" })
+});
+UW.bindPopup("University of Washington");
+
+linkStops.push(capHill, UW);
+
+
+//Set up layers
 var levels = [
   {
     zoom: 18,
@@ -48,26 +75,26 @@ var levels = [
     layers: [stationOverlay],
     retainLayers: true,
     text: `
-View of the station from overhead.
+On Mar. 19, the UW light rail station opens for commuters. Situated next to Husky Stadium, the station offers easy access to bike lanes and pedestrians.
     `
   },
   {
-    zoom: 17,
-    center: [47.65018644440777, -122.30417668819427],
-    layers: stops,
-    text: "Bus routes that connect to the station"
-  },
-  {
     zoom: 15,
-    center: [47.649617272744166, -122.3038199543953],
+    center: [47.652617272744166, -122.3038199543953],
     layers: [halfMileRadius],
-    text: "Employers that are close to the station"
+    text: "The new station is expected to be a serious boon to nearby employers, including the 5,000 workers at the University of Washington Medical Center. The shaded circle on the map marks a half-mile radius around the station, but shuttles will also run to the Seattle Children's Hospital, which employs 6,340 people."
   },
   {
-    zoom: 13,
-    center: [47.61605771027536, -122.32409477233885],
-    layers: [],
-    text: "The entire line and travel times"
+    zoom: 17,
+    center: [47.65118644440777, -122.30517668819427],
+    layers: busStopsUW,
+    text: "Extending the light rail this far also opens up opportunities for commuters who may transfer to or from a bus. The map shows bus stops within easy walking distance, headed into North Seattle. It's also expected that some passengers may travel over the 520 bridge, then park nearby and take the train down to the Stadium or other South Seattle destinations."
+  },
+  {
+    zoom: 11,
+    center: [47.55605771027536, -122.32409477233885],
+    layers: linkStops.concat(mapElement.lookup.line),
+    text: "The UW and Capital Hill stations, shown in green on the map, are the first additions to the line. They're expected to be followed by the Angle Lake station south of the airport in XXXX, and a station in Northgate in XXXX."
   }
 ];
 

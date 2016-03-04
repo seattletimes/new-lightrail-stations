@@ -8,7 +8,7 @@ var mapElement = document.querySelector("leaflet-map");
 var map = mapElement.map;
 var L = mapElement.leaflet;
 var caption = document.querySelector(".text-container .caption");
-var level = 3;
+var level = 0;
 
 mapElement.lookup.line.setStyle({
   color: "black",
@@ -45,7 +45,7 @@ var halfMileRadius = new L.Circle([47.649617272744166, -122.3038199543953], 804,
 });
 
 var uwmc = new L.Marker([47.650098991309704, -122.30911731719972], {
-  icon: new L.DivIcon({ className: "leaflet-div-icon employer" })
+  icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
 });
 uwmc.bindPopup(`
   <h2>University of Washington Medical Center</h2>
@@ -53,7 +53,7 @@ uwmc.bindPopup(`
 `);
 
 var seattleChildrens = new L.Marker([47.662618497165134, -122.28229522705078], {
-  icon: new L.DivIcon({ className: "leaflet-div-icon employer" })
+  icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
 });
 seattleChildrens.bindPopup(`
   <h2>Seattle Children's Hospital</h2>
@@ -61,14 +61,14 @@ seattleChildrens.bindPopup(`
 `);
 
 var uVillage = new L.Marker([47.66348558796421, -122.29877471923828], {
-  icon: new L.DivIcon({ className: "leaflet-div-icon employer" })
+  icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
 });
 uVillage.bindPopup(`
   <h2>University Village shopping center</h2>
 `);
 
 var uwItself = new L.Marker([47.65967028071764, -122.30512619018553], {
-  icon: new L.DivIcon({ className: "leaflet-div-icon employer" })
+  icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
 });
 uwItself.bindPopup(`
   <h2>University of Washington</h2>

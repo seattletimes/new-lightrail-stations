@@ -1,14 +1,14 @@
 {
   "uw_elevation": {
-    "content": "On Mar. 19, the UW light rail station opens for commuters. Situated next to Husky Stadium, the station offers easy access to bike lanes and pedestrians."
+    "content": "On Mar. 19, the UW light rail station opens next to Husky Stadium, where crosswalks and a new bridge offer easy access to bicycles and pedestrians."
   },
   "uw_buses": {
-    "content": "Extending the light rail this far opens up opportunities for commuters who may transfer to or from a bus. The map shows bus stops within easy walking distance, headed into North Seattle. It's also expected that some passengers may travel over the 520 bridge, then park nearby and take the train down to the Stadium or other South Seattle destinations."
+    "content": "* The impact of UW Station will be widened, by connecting bus routes that carry rail users an extra mile or farther.\n* Here are the local buses within walking distance, as well as connections to Snohomish County or the Eastside, starting from Mar. 26.\n* Some passengers may arrive on Lake City or Highway 520 by bus, then hop a train to Sodo stadiums or the airport."
   },
   "uw_employers": {
-    "content": "The new station is also expected to be a serious boon to nearby employers, including the 5,000 workers at the University of Washington Medical Center. The shaded circle on the map marks a half-mile radius around the station, but shuttles will also run to the Seattle Children's Hospital, which employs 6,340 people."
+    "content": "* The new station will serve many of the 5,000 workers at UW Medical Center.\n* The shaded circle on the map marks a half-mile radius, but private shuttle buses and the Burke-Gilman Trail lead to Seattle Childrens Hospital, which employs 6,340 people.\n* Of course, there's also the 40,000 students at the UW itself, plus faculty and nearby businesses."
   },
   "full_line": {
-    "content": "The UW and Capital Hill stations, shown in green on the map, are the first additions to the line. They're expected to be followed by the Angle Lake station south of the airport in XXXX, and a station in Northgate in XXXX."
+    "content": "* The UW and Capitol Hill stations, shown in red, are only the newest additions.\n* Angle Lake Station will be added south of the airport in Fall 2016.\n* A station in Northgate is planned for Fall 2021."
   }
 }

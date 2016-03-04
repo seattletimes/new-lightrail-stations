@@ -14,7 +14,7 @@
         <section class="map-container">
           <div class="aspect-ratio">
             <leaflet-map>
-              <tile-layer layer="cartoPositron"></tile-layer>
+              <tile-layer layer="esriTopographic"></tile-layer>
               <map-options>{ "showZoomControls": false }</map-options>
               <geo-json id="line"><%= t.include("route.geojson") %></geo-json>
             </leaflet-map>
@@ -33,7 +33,16 @@
     <script>
 window.linkStops = <%= JSON.stringify(csv.stations) %>;
 window.busStops = <%= JSON.stringify(csv.stops) %>;
-window.stageText = <%= JSON.stringify(json.LightRailStations_text) %>;
+<%
+var commonmark = require("commonmark");
+var writer = new commonmark.HtmlRenderer();
+var reader = new commonmark.Parser();
+var text = {};
+for (var k in json.LightRailStations_text) {
+  text[k] = writer.render(reader.parse(json.LightRailStations_text[k].content));
+}
+%>
+window.stageText = <%= JSON.stringify(text) %>;
     </script>
 
     <script src="app.js" async></script>

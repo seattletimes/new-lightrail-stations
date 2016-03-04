@@ -9,6 +9,10 @@ main.interactive {
   font-family: @df-sans;
   font-size: 15px;
 
+  @media @mobile {
+    display: block;
+  }
+
   .map-container {
     .flex(2);
   }
@@ -37,6 +41,10 @@ main.interactive {
   .display-flex();
   .flex-direction(column);
 
+  @media @mobile {
+    display: block;
+  }
+
   .zoom-controls {
     .display-flex();
 
@@ -60,6 +68,16 @@ main.interactive {
 
   .caption {
     padding: 16px 8px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 1em;
+    }
   }
 }
 
@@ -80,6 +98,19 @@ main.interactive {
 
   &.new-station {
     background: @st-dark-green;
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0 !important;
+
+  h2 {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
   }
 }
 

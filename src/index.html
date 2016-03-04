@@ -17,7 +17,8 @@
               <tile-layer layer="esriTopographic"></tile-layer>
               <map-options>{ 
               "zoomControl": false,
-              "scrollWheelZoom": false
+              "scrollWheelZoom": false,
+              "zoomAnimationThreshold": 10
               }</map-options>
               <geo-json id="line"><%= t.include("route.geojson") %></geo-json>
             </leaflet-map>

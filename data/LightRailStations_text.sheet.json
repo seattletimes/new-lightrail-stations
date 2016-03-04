@@ -8,6 +8,9 @@
   "uw_employers": {
     "content": "* The new station will serve many of the 5,000 workers at UW Medical Center.\n* The shaded circle on the map marks a half-mile radius, but private shuttle buses and the Burke-Gilman Trail lead to Seattle Childrens Hospital, which employs 6,340 people.\n* Of course, there's also the 40,000 students at the UW itself, plus faculty and nearby businesses."
   },
+  "ch_elevation": {
+    "content": "* The Capitol Hill station also opens March 19.\n* It differs from the UW station in that it has three separate aboveground entrances, on either side of Broadway."
+  },
   "full_line": {
     "content": "* The UW and Capitol Hill stations, shown in red, are expected to add 45,000 weekday passengers to the system by 2021, for a total of 80,000.\n* Angle Lake Station will be added south of the airport in Fall 2016, and a station in Northgate is planned for Fall 2021"
   }

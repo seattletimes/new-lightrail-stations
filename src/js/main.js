@@ -24,12 +24,19 @@ mapElement.lookup.line.setStyle({
 map.removeLayer(mapElement.lookup.line);
 
 // various layers
-var stationOverlay = new L.ImageOverlay(
+var uwStation = new L.ImageOverlay(
   "./assets/UW-station.png", 
   [[47.65060600128468, -122.30502426624298], [47.6490701393643, -122.3029214143753]]
 );
 
-stationOverlay.addTo(map);
+uwStation.addTo(map);
+
+var capHillStation = new L.ImageOverlay(
+  "./assets/CapHill-station.png",
+  [[47.6180662329101, -122.32152521610261], [47.619876565227834, -122.31960475444794]]
+);
+
+capHillStation.addTo(map);
 
 var busStopsUW = window.busStops.map(function(stop) {
   var marker = new L.Marker([stop.lat, stop.lng], {
@@ -129,7 +136,15 @@ var levels = [
     center: [47.55605771027536, -122.32409477233885],
     layers: linkStops.concat(mapElement.lookup.line),
     text: window.stageText.full_line
-  }
+  },
+  {
+    name: "Capitol Hill",
+    zoom: 17,
+    center: [47.619040209021506, -122.32044696807861],
+    layers: [],
+    retainLayers: true,
+    text: window.stageText.ch_elevation
+  },
 ];
 
 var removeFeatures = function(zoom) {
@@ -142,7 +157,7 @@ var setLevel = function(zoom) {
   var preset = levels[zoom];
   var before = levels[zoom - 1];
   var after = levels[zoom + 1];
-  map.setView(preset.center, preset.zoom, { animate: true });
+  map.setView(preset.center, preset.zoom, { animate: true, duration: 1 });
   preset.layers.forEach(l => l.addTo(map));
   caption.innerHTML = preset.text;
   if (before) {

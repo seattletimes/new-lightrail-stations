@@ -15,7 +15,10 @@
           <div class="aspect-ratio">
             <leaflet-map>
               <tile-layer layer="esriTopographic"></tile-layer>
-              <map-options>{ "showZoomControls": false }</map-options>
+              <map-options>{ 
+              "zoomControl": false,
+              "scrollWheelZoom": false
+              }</map-options>
               <geo-json id="line"><%= t.include("route.geojson") %></geo-json>
             </leaflet-map>
           </div>

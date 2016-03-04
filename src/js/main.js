@@ -8,7 +8,10 @@ var mapElement = document.querySelector("leaflet-map");
 var map = mapElement.map;
 var L = mapElement.leaflet;
 var caption = document.querySelector(".text-container .caption");
+var nextButton = document.querySelector(".zoom.out");
+var previousButton = document.querySelector(".zoom.in");
 var level = 0;
+
 
 mapElement.lookup.line.setStyle({
   color: "black",
@@ -137,9 +140,25 @@ var removeFeatures = function(zoom) {
 
 var setLevel = function(zoom) {
   var preset = levels[zoom];
+  var before = levels[zoom - 1];
+  var after = levels[zoom + 1];
   map.setView(preset.center, preset.zoom, { animate: true });
   preset.layers.forEach(l => l.addTo(map));
   caption.innerHTML = preset.text;
+  if (before) {
+    previousButton.innerHTML = before.name;
+    previousButton.classList.remove("disabled");
+  } else {
+    previousButton.innerHTML = "";
+    previousButton.classList.add("disabled");
+  }
+  if (after) {
+    nextButton.innerHTML = after.name;
+    nextButton.classList.remove("disabled");
+  } else {
+    nextButton.innerHTML = "";
+    nextButton.classList.add("disabled");
+  }
 }
 
 $(".zoom").forEach(el => el.addEventListener("click", function() {

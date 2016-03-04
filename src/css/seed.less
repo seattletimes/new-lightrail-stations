@@ -38,11 +38,12 @@ main.interactive {
 }
 
 .text-container {
-  .display-flex();
-  .flex-direction(column);
 
-  @media @mobile {
-    display: block;
+  .label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: @df-middle-gray;
   }
 
   .zoom-controls {
@@ -59,9 +60,14 @@ main.interactive {
       border: 1px solid white;
       transition: .3s;
 
-      &:hover {
+      &:hover:not(.disabled) {
         background: @df-middle-gray;
         color: white;
+      }
+
+      &.disabled {
+        background: white;
+        cursor: default;
       }
     }
   }

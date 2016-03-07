@@ -14,7 +14,8 @@ module.exports = function(L) {
     var marker = new L.Marker([stop.lat, stop.lng], {
       icon: new L.Icon({ iconUrl: "./assets/bus-icon.png", iconSize: [24, 24] })
     });
-    marker.bindPopup(`<h2>Routes</h2><p class="bus-routes">${stop.routes}</p>`);
+    var routes = stop.routes.split(",").map(r => `<li>${r}</li>`).join("\n");
+    marker.bindPopup(`<h2>Routes</h2><ul class="bus-routes">${routes}</ul>`);
     return marker;
   });
 
@@ -61,19 +62,23 @@ module.exports = function(L) {
     var marker = new L.Marker([data.lat, data.lng], {
       icon: new L.Icon({ iconUrl: "./assets/transit-icon.png", iconSize: [20, 20] })
     });
-    marker.bindPopup(data.station);
+    var timeString = data.time ? `Time from UW Station: ${data.time} min` : "";
+    marker.bindPopup(`
+<h2>${data.station}</h2>
+<p>${timeString}</p>
+    `);
     return marker;
   });
 
   var capHill = new L.Marker([47.619040209021506, -122.32044696807861], {
     icon: new L.Icon({ iconUrl: "./assets/new-transit-icon.png", iconSize: [20, 20] })
   });
-  capHill.bindPopup("Capital Hill");
+  capHill.bindPopup("<h2>Capital Hill</h2>");
 
   var UW = new L.Marker([47.649617272744166, -122.3038199543953], {
     icon: new L.Icon({ iconUrl: "./assets/new-transit-icon.png", iconSize: [20, 20] })
   });
-  UW.bindPopup("University of Washington");
+  UW.bindPopup("<h2>University of Washington</h2>");
 
   linkStops.push(capHill, UW);
 

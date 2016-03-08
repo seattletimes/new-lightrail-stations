@@ -10,7 +10,7 @@ module.exports = function(L) {
     [[47.6180662329101, -122.32152521610261], [47.619876565227834, -122.31960475444794]]
   );
 
-  var busStopsUW = window.busStops.map(function(stop) {
+  var busStopsUW = window.busStops.filter(s => !s.filter).map(function(stop) {
     var marker = new L.Marker([stop.lat, stop.lng], {
       icon: new L.Icon({ iconUrl: "./assets/bus-icon.png", iconSize: [24, 24] })
     });

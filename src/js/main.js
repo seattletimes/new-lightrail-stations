@@ -40,7 +40,7 @@ var levels = [
   {
     name: "UW bus changes",
     zoom: 17,
-    center: [47.6513247691264, -122.30541586875916],
+    center: [47.6503247691264, -122.30541586875916],
     layers: layers.busStopsUW,
     text: window.stageText.uw_buses
   },

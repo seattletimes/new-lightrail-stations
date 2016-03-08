@@ -13,10 +13,9 @@
       <main class="interactive">
         <section class="map-container">
           <div class="aspect-ratio">
-            <leaflet-map>
+            <leaflet-map fixed>
               <tile-layer layer="esriTopographic"></tile-layer>
-              <map-options>{ 
-              "zoomControl": false,
+              <map-options>{
               "scrollWheelZoom": false,
               "zoomAnimationThreshold": 10
               }</map-options>
@@ -38,6 +37,7 @@
     <script>
 window.linkStops = <%= JSON.stringify(csv.stations) %>;
 window.busStops = <%= JSON.stringify(csv.stops) %>;
+window.employers = <%= JSON.stringify(csv.employers) %>;
 <%
 var commonmark = require("commonmark");
 var writer = new commonmark.HtmlRenderer();

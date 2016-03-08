@@ -27,36 +27,19 @@ module.exports = function(L) {
     fillOpacity: .1
   });
 
-  var uwmc = new L.Marker([47.650098991309704, -122.30911731719972], {
-    icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
+  var employers = window.employers.map(function(row) {
+    var marker = new L.Marker([row.lat, row.lng], {
+      icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
+    });
+    var employs = row.employees ? `Employs ${row.employees} workers` : "";
+    var students = row.students ? `More than ${row.students} students enrolled` : "";
+    marker.bindPopup(`
+      <h2>${row.name}</h2>
+      <p>${employs}</p>
+      <p>${students}</p>
+    `);
+    return marker;
   });
-  uwmc.bindPopup(`
-    <h2>University of Washington Medical Center</h2>
-    <p>Employs <b>5,000</b> workers</p>
-  `);
-
-  var seattleChildrens = new L.Marker([47.662618497165134, -122.28229522705078], {
-    icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
-  });
-  seattleChildrens.bindPopup(`
-    <h2>Seattle Children's Hospital</h2>
-    <p>Employs <b>6,340 workers</b></p>
-  `);
-
-  var uVillage = new L.Marker([47.66348558796421, -122.29877471923828], {
-    icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
-  });
-  uVillage.bindPopup(`
-    <h2>University Village shopping center</h2>
-  `);
-
-  var uwItself = new L.Marker([47.65967028071764, -122.30512619018553], {
-    icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
-  });
-  uwItself.bindPopup(`
-    <h2>University of Washington</h2>
-    <p>Enrolled: more than <b>40,000 students</b>
-  `);
 
   var linkStops = window.linkStops.map(function(data) {
     var marker = new L.Marker([data.lat, data.lng], {
@@ -87,10 +70,7 @@ module.exports = function(L) {
     capHillStation,
     busStopsUW,
     halfMileRadius,
-    uwmc,
-    seattleChildrens,
-    uVillage,
-    uwItself,
+    employers,
     linkStops
   }
 

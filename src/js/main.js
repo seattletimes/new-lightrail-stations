@@ -48,7 +48,7 @@ var levels = [
     name: "Nearby employers",
     zoom: 14,
     center: [47.654617272744166, -122.2958199543953],
-    layers: [layers.halfMileRadius, layers.uwmc, layers.seattleChildrens, layers.uVillage, layers.uwItself],
+    layers: layers.employers.concat(layers.halfMileRadius),
     text: window.stageText.uw_employers
   },
   {

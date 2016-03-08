@@ -5,8 +5,8 @@
       "path": "definite-mahimahi"
     },
     "live": {
-      "bucket": "",
-      "path": ""
+      "bucket": "projects.seattletimes.com",
+      "path": "2016/local/new-lightrail-stations"
     }
   },
   "title": "",
@@ -16,6 +16,6 @@
   "tags": [],
   "image": "assets/social.jpg",
   "sheets": ["1xi-VseD4Uc9Vd25c93CzlYn64FYCBSPsNfgFNVRUPyk"],
-  "production": false,
+  "production": true,
   "embedded": true
 }

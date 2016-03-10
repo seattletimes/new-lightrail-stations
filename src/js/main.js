@@ -8,6 +8,7 @@ var mapElement = document.querySelector("leaflet-map");
 var map = mapElement.map;
 var L = mapElement.leaflet;
 var caption = document.querySelector(".text-container .caption");
+var slideTitle = document.querySelector(".zoom-controls .title");
 var nextButton = document.querySelector(".zoom.out");
 var previousButton = document.querySelector(".zoom.in");
 var level = 0;
@@ -33,6 +34,7 @@ var levels = [
     name: "UW Station",
     zoom: 18,
     center: [47.64979290354127, -122.30393528938293],
+    fit: [[47.650552111342776, -122.30295896530151], [47.64925114753461, -122.30475068092345]],
     layers: [],
     retainLayers: true,
     text: window.stageText.uw_elevation
@@ -41,6 +43,7 @@ var levels = [
     name: "UW bus changes",
     zoom: 17,
     center: [47.6503247691264, -122.30541586875916],
+    fit: [[47.652199952311406, -122.30294823646544], [47.648766891618656, -122.30773329734801]],
     layers: layers.busStopsUW,
     text: window.stageText.uw_buses
   },
@@ -48,6 +51,7 @@ var levels = [
     name: "Nearby employers",
     zoom: 14,
     center: [47.654617272744166, -122.2958199543953],
+    fit: [[47.6666644360582, -122.27929115295409], [47.64671891828457, -122.31259346008301]],
     layers: layers.employers.concat(layers.halfMileRadius),
     text: window.stageText.uw_employers
   },
@@ -55,6 +59,7 @@ var levels = [
     name: "The full line",
     zoom: 11,
     center: [47.55605771027536, -122.32409477233885],
+    fit: [[47.65988128570083, -122.2551727294922], [47.440207091724936, -122.34306335449217]],
     layers: layers.linkStops.concat(mapElement.lookup.line),
     text: window.stageText.full_line
   },
@@ -62,6 +67,7 @@ var levels = [
     name: "Capitol Hill",
     zoom: 17,
     center: [47.619040209021506, -122.32044696807861],
+    fit: [[47.61997812572707, -122.31951355934143], [47.61796043781042, -122.3216164112091]],
     layers: [],
     retainLayers: true,
     text: window.stageText.ch_elevation
@@ -81,22 +87,27 @@ var setLevel = function(zoom) {
 
   preset.layers.forEach(l => l.addTo(map));
   var _ = mapElement.offsetWidth; //reflow
-  map.setView(preset.center, preset.zoom, { animate: true, duration: 1 });
+  if (preset.fit) {
+    map.fitBounds(preset.fit, { animate: true });
+  } else {
+    map.setView(preset.center, preset.zoom, { animate: true, duration: 1 });
+  }
   caption.innerHTML = preset.text;
+  slideTitle.innerHTML = preset.name;
   
   if (before) {
-    previousButton.innerHTML = before.name;
+    previousButton.setAttribute("title", before.name);
     previousButton.classList.remove("disabled");
   } else {
-    previousButton.innerHTML = "";
+    previousButton.setAttribute("title", "");
     previousButton.classList.add("disabled");
   }
   
   if (after) {
-    nextButton.innerHTML = after.name;
+    nextButton.setAttribute("title", after.name);
     nextButton.classList.remove("disabled");
   } else {
-    nextButton.innerHTML = "";
+    nextButton.setAttribute("title", "");
     nextButton.classList.add("disabled");
   }
 }

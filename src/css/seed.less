@@ -2,6 +2,7 @@
 
 leaflet-map:not([ready]) {
   opacity: 0;
+  height: 0;
 }
 
 main.interactive {
@@ -43,6 +44,11 @@ main.interactive {
 }
 
 .text-container {
+  padding-left: 20px;
+  
+  @media @mobile {
+    padding-left: 0px;
+  }
 
   .label {
     text-align: center;
@@ -53,10 +59,19 @@ main.interactive {
 
   .zoom-controls {
     .display-flex();
+    .align-items(center);
+    
+    .title {
+      padding: 20px;
+      .flex(1);
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
 
     .zoom {
-      background: @df-light-gray;
-      .flex(1);
+      font-weight: bold;
+      font-size: 50px;
       text-align: center;
       color: @df-dark-gray;
       text-transform: uppercase;
@@ -66,12 +81,11 @@ main.interactive {
       transition: .3s;
 
       &:hover:not(.disabled) {
-        background: @df-middle-gray;
-        color: white;
+        background: @df-light-gray;
       }
 
       &.disabled {
-        background: lighten(@df-light-gray, 8%);
+        color: lighten(@df-light-gray, 8%);
         cursor: default;
       }
     }

@@ -7,12 +7,12 @@ module.exports = function(L) {
 
   var capHillStation = new L.ImageOverlay(
     "./assets/CapHill-station.png",
-    [[47.6180662329101, -122.32152521610261], [47.619876565227834, -122.31960475444794]]
+    [[47.619876542606605, -122.31910049915312], [47.618177058238125, -122.32153594493866]]
   );
 
   var busStopsUW = window.busStops.filter(s => !s.filter).map(function(stop) {
     var marker = new L.Marker([stop.lat, stop.lng], {
-      icon: new L.Icon({ iconUrl: "./assets/bus-icon.png", iconSize: [24, 24] })
+      icon: new L.Icon({ iconUrl: "./assets/bus-icon.png", iconSize: [30, 30] })
     });
     var routes = stop.routes.split(",").map(r => `<li>${r}</li>`).join("\n");
     marker.bindPopup(`<h2>Routes</h2><ul class="bus-routes">${routes}</ul>`);
@@ -29,7 +29,7 @@ module.exports = function(L) {
 
   var employers = window.employers.map(function(row) {
     var marker = new L.Marker([row.lat, row.lng], {
-      icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [20, 20] })
+      icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [30, 30] })
     });
     var employs = row.employees ? `Employs ${row.employees} workers` : "";
     var students = row.students ? `More than ${row.students} students enrolled` : "";
@@ -45,7 +45,7 @@ module.exports = function(L) {
     var marker = new L.Marker([data.lat, data.lng], {
       icon: new L.Icon({ iconUrl: "./assets/transit-icon.png", iconSize: [20, 20] })
     });
-    var timeString = data.time ? `Time from UW Station: ${data.time} min` : "";
+    var timeString = data.time ? `Time from UW Station: ${data.time} minutes` : "";
     marker.bindPopup(`
 <h2>${data.station}</h2>
 <p>${timeString}</p>
@@ -56,7 +56,8 @@ module.exports = function(L) {
   var capHill = new L.Marker([47.619040209021506, -122.32044696807861], {
     icon: new L.Icon({ iconUrl: "./assets/new-transit-icon.png", iconSize: [20, 20] })
   });
-  capHill.bindPopup("<h2>Capital Hill</h2>");
+  capHill.bindPopup(`<h2>Capitol Hill</h2>
+  <p>Time from UW Station: 4 minutes`);
 
   var UW = new L.Marker([47.649617272744166, -122.3038199543953], {
     icon: new L.Icon({ iconUrl: "./assets/new-transit-icon.png", iconSize: [20, 20] })

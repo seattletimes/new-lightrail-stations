@@ -43,7 +43,7 @@ var levels = [
     name: "UW bus changes",
     zoom: 17,
     center: [47.6503247691264, -122.30541586875916],
-    fit: [[47.652199952311406, -122.30294823646544], [47.648766891618656, -122.30773329734801]],
+    fit: [[47.652532405150914, -122.30294823646544], [47.648766891618656, -122.30773329734801]],
     layers: layers.busStopsUW,
     text: window.stageText.uw_buses
   },
@@ -67,7 +67,7 @@ var levels = [
     name: "Capitol Hill",
     zoom: 17,
     center: [47.619040209021506, -122.32044696807861],
-    fit: [[47.61997812572707, -122.31951355934143], [47.61796043781042, -122.3216164112091]],
+    fit: [[47.619876542606605, -122.31910049915312], [47.618177058238125, -122.32153594493866]],
     layers: [],
     retainLayers: true,
     text: window.stageText.ch_elevation
@@ -122,4 +122,4 @@ $(".zoom").forEach(el => el.addEventListener("click", function() {
 
 setLevel(level);
 
-// map.on("click", e => console.log([e.latlng.lat, e.latlng.lng]));
+map.on("click", e => console.log([e.latlng.lat, e.latlng.lng]));

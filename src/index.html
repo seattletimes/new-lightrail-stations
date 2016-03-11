@@ -11,26 +11,29 @@
 
     <responsive-child>
       <main class="interactive">
-        <section class="map-container">
-          <div class="aspect-ratio">
-            <leaflet-map fixed>
-              <tile-layer layer="esriTopographic"></tile-layer>
-              <map-options>{
-              "scrollWheelZoom": false,
-              "zoomAnimationThreshold": 10
-              }</map-options>
-              <geo-json id="line"><%= t.include("route.geojson") %></geo-json>
-            </leaflet-map>
-          </div>
-        </section>
-        <section class="text-container">
-          <nav class="zoom-controls">
-            <a class="zoom in">&lang;</a>
-            <div class="title">New lightrail stations</div>
-            <a class="zoom out">&rang;</a>
-          </nav>
-          <div class="caption"></div>
-        </section>
+        <h2>Explore the impact of UW's new station</h2>
+        <div class="flex-row">
+          <section class="map-container">
+            <div class="aspect-ratio">
+              <leaflet-map fixed>
+                <tile-layer layer="esriTopographic"></tile-layer>
+                <map-options>{
+                "scrollWheelZoom": false,
+                "zoomAnimationThreshold": 10
+                }</map-options>
+                <geo-json id="line"><%= t.include("route.geojson") %></geo-json>
+              </leaflet-map>
+            </div>
+          </section>
+          <section class="text-container">
+            <nav class="zoom-controls">
+              <a class="zoom in">&lang;</a>
+              <div class="title">New lightrail stations</div>
+              <a class="zoom out">&rang;</a>
+            </nav>
+            <div class="caption"></div>
+          </section>
+        </div>
       </main>
     </responsive-child>
 

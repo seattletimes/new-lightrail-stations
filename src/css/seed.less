@@ -5,8 +5,14 @@ leaflet-map:not([ready]) {
   height: 0;
 }
 
+h2 {
+  font-family: @df-sans;
+  font-size: 20px;
+  margin: 0 auto 20px;
+  max-width: 960px;
+}
+
 main.interactive {
-  .display-flex();
   padding: 20px;
   margin: 20px auto;
   border-top: 1px solid @df-light-gray;
@@ -14,6 +20,10 @@ main.interactive {
   font-family: @df-sans;
   font-size: 15px;
   max-width: 960px;
+}
+
+.flex-row {
+  .display-flex();
 
   @media @mobile {
     display: block;

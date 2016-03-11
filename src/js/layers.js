@@ -31,12 +31,9 @@ module.exports = function(L) {
     var marker = new L.Marker([row.lat, row.lng], {
       icon: new L.Icon({ iconUrl: "./assets/employer-icon.png", iconSize: [30, 30] })
     });
-    var employs = row.employees ? `Employs ${row.employees} workers` : "";
-    var students = row.students ? `More than ${row.students} students enrolled` : "";
     marker.bindPopup(`
       <h2>${row.name}</h2>
-      <p>${employs}</p>
-      <p>${students}</p>
+      <p>${row.text}</p>
     `);
     return marker;
   });

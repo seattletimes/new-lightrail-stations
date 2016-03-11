@@ -1,5 +1,5 @@
-name,employees,students,lat,lng
-UW Medical Center,"5,000",,47.65009899,-122.3091173
-Seattle Children's,"8,800",,47.6626185,-122.2822952
-University Village shopping center,,,47.66348559,-122.2987747
-University of Washington,,"45,000",47.65967028,-122.3051262
+name,text,lat,lng
+UW Medical Center,"4,000 workers",47.65009899,-122.3091173
+Seattle Children's,"8,800 workers",47.6626185,-122.2822952
+University Village shopping center,,47.66348559,-122.2987747
+University of Washington,"46,000 students; 14,000 faculty and staff",47.65967028,-122.3051262
